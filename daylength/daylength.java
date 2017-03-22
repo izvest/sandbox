@@ -1,28 +1,22 @@
-import java.util.Scanner;
-import java.lang.Math;
+package daylength;
+
 import java.util.Calendar;
+import java.lang.Math;
 
-public class daylength{
+public class Daylength {
+	
+	public static Calendar C = Calendar.getInstance();
+	
+	private static double DAY = C.get(Calendar.DAY_OF_YEAR); //today is n:th day of year
+	private static double DIY = C.getActualMaximum(Calendar.DAY_OF_YEAR); //days in this year
+	private static double D = 2.0*Math.PI*(0-170.0)/DIY;
 
-	public static void main(String[] args){
-		/*boolean jatkuu = true;
-		Scanner sc = new Scanner(System.in);
-		while (jatkuu){
-			try{
-				System.out.print("Syota leveyspiiri: ");
-				int lat = sc.nextInt();
-				jatkuu = false;
-			}catch (Exception e){
-				System.out.println("Jokin meni pieleen, yrita uudelleen!");
-			}
-		}*/
-		int lat = 0;
-		Calendar calendar = Calendar.getInstance();
-		int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
-		//int lowDay = 355;
-		//int highDay = lowDay - 183;
-		double dayLength = 12.0 + Math.sin((2*Math.PI())*((dayOfYear-183)/365));
-		System.out.println(dayLength);
+	public static void giveLength(int lat, int lon) {
+		double length = 12.0 + 14*Math.cos(D)*(lat/90.0);
+		int hour = (int)length;
+		int min = (int)(6*(length-hour))*10;
+		System.out.println("Päivän pituus noin: "+hour+"h "+min+"min "+length);
+		System.out.println(D);
 	}
-
+	
 }
