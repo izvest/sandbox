@@ -1,33 +1,42 @@
-import java.lang.Thread;
+//import java.lang.Thread;
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class primefinder{
 
-	public static void main (String[] args){
+	public static void main (String[] args) throws InterruptedException{
+      
+      	long startTime = System.nanoTime();
 
 		List<Integer> primes = new ArrayList<Integer>();
-      	primes.add(1);
 		boolean found;
+      	int sample = 10000;
 		
-		for (int i = 2; i < 1000; i++){
+		for (int i = 2; i <= sample; i++){
 			found = true;
           	inner:
 			for (int x : primes){
-				if (x != 1 && i%x == 0){
+				if (i%x == 0){
 					found = false;
 					break inner;
 				}
-				if(x > i/2){
+				if(x > (int)Math.sqrt(i)){
 					break inner;
 				}
 			}
 			if (found == true){
-				System.out.println("Found: " + i);
 				primes.add(i);
-				//Thread.sleep(500);
+              	//System.out.println("Found: " + i);
+				//Thread.sleep(5);
 			}
 		}
-		System.out.println(primes);
+      
+      	long endTime = System.nanoTime();
+      	long duration = (endTime - startTime)/1000000;  //divide by 1000000 to get milliseconds.
+      
+		//System.out.println(primes);
+      	System.out.println("Primes found: " + primes.size() + " out of " + sample);
+      	System.out.println("Runtime: " + duration + "ms");
 	}
 }
