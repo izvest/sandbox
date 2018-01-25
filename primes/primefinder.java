@@ -1,4 +1,3 @@
-//import java.lang.Thread;
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.Math;
@@ -27,8 +26,6 @@ public class primefinder{
 			}
 			if (found == true){
 				primes.add(i);
-              	//System.out.println("Found: " + i);
-				//Thread.sleep(5);
 			}
 		}
       

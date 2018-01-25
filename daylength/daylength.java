@@ -5,18 +5,24 @@ import java.lang.Math;
 
 public class Daylength {
 	
-	public static Calendar C = Calendar.getInstance();
+	private static Calendar C = Calendar.getInstance();
 	
-	private static double DAY = C.get(Calendar.DAY_OF_YEAR); //today is n:th day of year
-	private static double DIY = C.getActualMaximum(Calendar.DAY_OF_YEAR); //days in this year
-	private static double D = 2.0*Math.PI*(0-170.0)/DIY;
+	private static double day = C.get(Calendar.DAY_OF_YEAR); //today is n:th day of year
+	private static double DiY = C.getActualMaximum(Calendar.DAY_OF_YEAR); //days in this year
+	private static double D = 2.0*Math.PI*((day-DiY/4)/DiY);
 
-	public static void giveLength(int lat, int lon) {
-		double length = 12.0 + 14*Math.cos(D)*(lat/90.0);
-		int hour = (int)length;
-		int min = (int)(6*(length-hour))*10;
-		System.out.println("Päivän pituus noin: "+hour+"h "+min+"min "+length);
-		System.out.println(D);
+	private double giveLength(int lat) {
+		return 12.0 + 12*Math.cos(D)*(lat/66.0);	
+	}
+
+	public static void length(int lat) {
+		if (giveLength(lat) < 0.0){
+			System.out.println("Kaamos");
+		}
+		else if (giveLength(lat) > 24.0){
+			System.out.println("Yoton yo");
+		}
+		else{System.out.println(giveLength(lat));}
 	}
 	
 }
