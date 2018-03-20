@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Math;
+//import java.lang.Math;
 
 public class primefinder{
 
@@ -20,14 +20,14 @@ public class primefinder{
 					found = false;
 					break inner;
 				}
-				if(x > Math.sqrt(i)){ //(x*x > i) or (x > sqrtA(i))
+				if(x*x > i){ //(x*x > i), (x > Math.sqrt(i)) or (x > sqrtA(i))
 					break inner;
 				}
 			}
 			if (found == true){
 				primes.add(i);
 			}
-			if (primes.size() == tenth*1000){ //lap times
+			if (primes.size() == tenth*10){ //lap times
 				long lapTime = (System.nanoTime()-startTime)/1000000;
 				System.out.println(primes.size() + " primes found in " + lapTime + " ms. (" + i + ")");
 				tenth *= 10;
@@ -38,7 +38,7 @@ public class primefinder{
 	System.out.println(primes.size() + " primes found in " + endTime + " ms. (" + sample + ")");
 	}
 	
-	public static int sqrtA(int n){ //Trying to make a quicker way to approximate square roots (And failing miserably...)
+	/*public static int sqrtA(int n){ //Trying to make a quicker way to approximate square roots (And failing miserably...)
 		double epsilon = 1;
 		double high = (double)n;
 		double low = 0.0;
@@ -54,5 +54,5 @@ public class primefinder{
 			}
 		}
 		return (int)(aprx + epsilon);
-	}
+	}*/
 }
