@@ -5,7 +5,7 @@ public class Player extends Person{
 	private ArrayList<Card> hand;
 	
 	public Person(String name){
-        super();
+        super(name,0,null);
 		this.hand = new ArrayList<>();
     }
     
@@ -19,7 +19,7 @@ public class Player extends Person{
         return c;
     }
 
-    public ArrayList<Card> giveHand(){
+    public ArrayList<Card> getHand(){
         return hand;
     }
 }
