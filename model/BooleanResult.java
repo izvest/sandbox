@@ -1,23 +1,23 @@
 package sandbox.model;
 
-public class ValidationResult<T> {
+public class BooleanResult<T> {
 
-    private boolean valid;
+    private boolean result;
     private String selite;
     private T payload;
 
-    public ValidationResult(boolean valid, String selite, T payload){
-        this.valid = valid;
+    public BooleanResult(boolean result, String selite, T payload){
+        this.result = result;
         this.selite = selite;
         this.payload = payload;
     }
 
-    public boolean isValid() {
-        return valid;
+    public boolean getResult() {
+        return result;
     }
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
+    public void setResult(boolean result) {
+        this.result = result;
     }
 
     public String getSelite() {
